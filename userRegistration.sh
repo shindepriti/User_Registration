@@ -5,12 +5,14 @@ echo " Wel-Come To User Registration "
 read -p "Enter User First Name:-" firstName
 read -p "Enter User Last Name:-" lastName
 read -p "Enter User Email Id:-" emailId
+read -p "Enter user password:-" password
 read -p "Enter User Mobile Number:-" mobileNumber
 
 firstNameRegx="^[A-Z][a-zA-Z]{2,}$"
 lastNameRegx="^[A-Z][a-zA-Z]{2,}$"
 emailRegx="^([a-zA-Z]{3,}([._+-]?[a-zA-Z0-9])*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}[.]?[a-zA-Z]*)$"
 mobileRegx="[0-9]{2}\s?[0-9]{10}$"
+passwordRegx="[0-9a-zA-Z]{8,}$"
 
 function validateUser(){
 	local symbol=$1
@@ -25,6 +27,7 @@ function validateUser(){
 validateUser $firstName $firstNameRegx 
 validateUser $lastName $lastNameRegx
 validateUser $emailId $emailRegx
+validateUser $password $passwordRegx
 
 function validateMobile(){
 	if	[[ $mobileNumber =~ $mobileRegx ]]
